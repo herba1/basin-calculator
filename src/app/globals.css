@@ -7,7 +7,7 @@
 
 @theme inline {
   --color-background: var(--background);
-  --color-highlight: var(--foreground);
+  --color-highlight: var(--highlight);
 }
 
 @theme {

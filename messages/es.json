@@ -1,0 +1,8 @@
+{
+  "navigation": {
+    "problem": "Problema",
+    "solution": "Solucion",
+    "extra": "Otro",
+    "button":"Calcula ROI"
+  }
+}

@@ -3,6 +3,8 @@
     "problem": "Problema",
     "solution": "Solucion",
     "extra": "Otro",
-    "button":"Calcula ROI"
+    "button":"Calcula ROI",
+    "menuOpen":"Menu",
+    "menuClose":"Cerar"
   }
 }

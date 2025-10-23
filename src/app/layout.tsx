@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { NavProvider } from "@/context/NavContext";
 import { Inter } from "next/font/google";
-import NavigationMenu from "./components/Navbar";
 import { NextIntlClientProvider } from "next-intl";
+import NavigationBar from "./components/Navbar";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -25,7 +25,7 @@ export default async function RootLayout({
       <body className={` ${inter.className} antialiased`}>
         <NextIntlClientProvider>
           <NavProvider>
-            <NavigationMenu></NavigationMenu>
+            <NavigationBar></NavigationBar>
             {children}
           </NavProvider>
         </NextIntlClientProvider>

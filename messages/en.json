@@ -6,5 +6,10 @@
     "button":"Calculate ROI",
     "menuOpen":"Menu",
     "menuClose":"Close"
+  },
+  "hero":{
+    "title":"Save Money Building Basins",
+    "text":"See how building artificial basins make a difference for the sustained use of water pumping in California. Use the basin calculator to see how much you can save putting unused land to work.",
+    "button":"Calculate Basin Investment"
   }
 }

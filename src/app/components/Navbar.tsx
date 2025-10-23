@@ -21,7 +21,7 @@ export default function NavigationBar({ className = "" }) {
 
   return (
     <nav
-      className={`${className} nav__container flex items-center justify-between px-3 py-3 md:px-5`}
+      className={`${className} nav__container flex h-18 min-h-fit items-center justify-between px-3 py-3 md:px-5`}
     >
       <ul className="nav__list nav__left flex items-center gap-3">
         <Link href={"/"} className="mr-6 w-19">
@@ -57,6 +57,7 @@ export default function NavigationBar({ className = "" }) {
   );
 }
 
+// TODO
 function NavigationMenu() {
   return (
     <menu>

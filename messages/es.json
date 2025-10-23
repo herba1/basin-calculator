@@ -1,10 +1,15 @@
 {
   "navigation": {
     "problem": "Problema",
-    "solution": "Solucion",
+    "solution": "Solución",
     "extra": "Otro",
-    "button":"Calcula ROI",
-    "menuOpen":"Menu",
-    "menuClose":"Cerar"
+    "button":"Calcular ROI",
+    "menuOpen":"Menú",
+    "menuClose":"Cerrar"
+  },
+  "hero":{
+    "title":"Ahorra con Cuencas Nuevas",
+    "text":"Descubre cómo las cuencas artificiales marcan la diferencia para el uso sostenido del bombeo de agua en California. Usa la calculadora de cuencas para ver cuánto puedes ahorrar poniendo terrenos sin uso a trabajar.",
+    "button":"Calcular Inversión en Cuenca"
   }
 }

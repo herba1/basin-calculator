@@ -1,12 +1,15 @@
 import { Geist } from "next/font/google";
+import Hero from "./components/Hero";
 
 
 
 export default function Home() {
   return (
-    <div
-      className={``}
+    <main
+      className={`h-[2000px]`}
     >
-    </div>
+      <Hero></Hero>
+
+    </main>
   );
 }

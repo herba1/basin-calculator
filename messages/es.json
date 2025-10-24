@@ -11,5 +11,21 @@
     "title":"Ahorra con Cuencas Nuevas",
     "text":"Descubre cómo las cuencas artificiales marcan la diferencia para el uso sostenido del bombeo de agua en California. Usa la calculadora de cuencas para ver cuánto puedes ahorrar poniendo terrenos sin uso a trabajar.",
     "button":"Calcular Inversión en Cuenca"
+  },
+  "problem": {
+    "heading": "",
+    "text": [
+      "El Valle Central de California enfrenta un desafío crítico de agua que amenaza su futuro agrícola. Décadas de agricultura intensiva han agotado los acuíferos subterráneos más rápido de lo que la naturaleza puede reponerlos, creando un ciclo insostenible de sobreexplotación de aguas subterráneas.",
+      "El Valle de San Joaquín, una de las regiones agrícolas más productivas del mundo, es particularmente vulnerable a esta crisis. La variabilidad climática ha intensificado el problema, con períodos prolongados de sequía que reducen la disponibilidad de agua superficial y obligan a los agricultores a depender aún más del bombeo de aguas subterráneas.",
+      "Sin intervención inmediata, las consecuencias serán graves. La sobreexplotación continua conduce a una capacidad de almacenamiento permanentemente disminuida, costos de bombeo dramáticamente aumentados, hundimiento de tierra que daña la infraestructura y pérdidas potenciales de cultivos. Se necesitan urgentemente soluciones sostenibles para proteger este recurso vital y garantizar la seguridad hídrica para las futuras generaciones de agricultores y comunidades."
+    ]
+  },
+  "solution": {
+    "heading": "",
+    "text": [
+      "Convertir tierras agrícolas inactivas o subutilizadas en cuencas de recarga de agua ofrece una solución práctica y científicamente comprobada para el agotamiento de las aguas subterráneas. Durante años húmedos cuando hay exceso de agua superficial disponible, estas cuencas especialmente diseñadas permiten que el agua se filtre lentamente a través del suelo hacia los acuíferos subterráneos, reponiendo naturalmente los suministros de aguas subterráneas agotados.",
+      "Esta estrategia de recarga gestionada de acuíferos ayuda a equilibrar el presupuesto hídrico de la región mientras proporciona a los agricultores una herramienta valiosa para la seguridad hídrica a largo plazo. Sin embargo, implementar cuencas de recarga requiere una inversión inicial significativa en preparación de tierras, infraestructura y gestión continua.",
+      "Nuestra Calculadora de ROI de Recarga de Agua le ayuda a tomar decisiones informadas analizando su tipo de suelo, evaluando requisitos de cuencas, calculando costos de instalación y proyectando el retorno de inversión. Compare múltiples escenarios para determinar si convertir tierra sin usar en una cuenca de recarga tiene sentido financiero para su operación."
+    ]
   }
 }

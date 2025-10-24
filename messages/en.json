@@ -13,7 +13,7 @@
     "button":"Calculate Basin Investment"
   },
   "problem":{
-    "heading":"",
+    "heading":"The Problems of Over Pumping",
     "text":[
     "California's Central Valley faces a critical water challenge that threatens its agricultural future. Decades of intensive farming have depleted underground aquifers faster than nature can replenish them, creating an unsustainable cycle of groundwater overdraft.",
     "The San Joaquin Valley, one of the world's most productive agricultural regions, is particularly vulnerable to this crisis. Climate variability has intensified the problem, with prolonged drought periods reducing surface water availability and forcing farmers to rely even more heavily on groundwater pumping.",
@@ -21,7 +21,7 @@
     ]
   },
   "solution":{
-    "heading":"",
+    "heading":"The Ways In Which You Can Help",
     "text":[
     "Converting idle or underutilized farmland into water recharge basins offers a practical, scientifically-proven solution to groundwater depletion. During wet years when excess surface water becomes available, these specially designed basins allow water to slowly percolate through the soil into underground aquifers, naturally replenishing depleted groundwater supplies.",
     "This managed aquifer recharge strategy helps balance the region's water budget while providing farmers with a valuable tool for long-term water security. However, implementing recharge basins requires significant upfront investment in land preparation, infrastructure, and ongoing management.",

@@ -6,7 +6,7 @@ import Link from "next/link";
 import cn from "../utils/cn";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "./Button";
 
 const navLeftLinks = [
@@ -21,7 +21,7 @@ export default function NavigationBar({ className = "" }) {
 
   return (
     <nav
-      className={`${className} nav__container flex h-16 min-h-fit items-center justify-between px-3 md:px-5`}
+      className={`${className} nav__container bg-background sticky top-0 z-40 flex h-16 min-h-fit items-center justify-between px-3 md:px-5`}
     >
       <ul className="nav__list nav__left flex items-center gap-3">
         <Link href={"/"} className="mr-6 w-19">
@@ -53,20 +53,61 @@ export default function NavigationBar({ className = "" }) {
         </Button>
         <NavigationTrigger className="md:hidden"></NavigationTrigger>
       </ul>
+      <NavigationMenu></NavigationMenu>
+      <div
+        data-is-open={nav.isOpen}
+        className={cn(
+          "nav__backdrop pointer-events-none absolute top-full left-0 -z-10 h-lvh w-full bg-black/20 backdrop-blur-xs",
+        )}
+      ></div>
     </nav>
   );
 }
 
 // TODO
 function NavigationMenu() {
+  const { isOpen } = useNav();
   return (
-    <menu>
-      {/* <ul>{navLeftLinks.map((e) => {
-        return
-      })}</ul> */}
+    <menu
+      data-is-open={isOpen}
+      id="navmenu"
+      className={cn(
+        "absolute top-full left-0 z-0 w-full origin-top overflow-clip rounded-b-3xl bg-white",
+        !isOpen && "pointer-events-none",
+      )}
+    >
+      <div className="menu__content px-3 py-5">
+        <ul className="content flex flex-col gap-4">
+          <NavigationMenuItem>Problem</NavigationMenuItem>
+          <NavigationMenuItem>Solultion</NavigationMenuItem>
+          <NavigationMenuItem>Extra+</NavigationMenuItem>
+        </ul>
+        <Button className="mt-20 w-full">Calculate ROI</Button>
+      </div>
     </menu>
   );
 }
+
+function NavigationMenuItem({
+  className,
+  children,
+}: {
+  className?: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <li
+      className={cn(
+        "bg-secondary border-secondary-dark tracking-body overflow-clip rounded-2xl border-1 px-3 py-4 text-3xl inset-shadow-sm",
+        className,
+      )}
+    >
+      {children}
+    </li>
+  );
+}
+
+function NavigationMenuItemAccordion() {}
 
 function NavigationTrigger({ className = "" }) {
   const nav = useNav();

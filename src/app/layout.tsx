@@ -22,7 +22,7 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={` ${inter.className} antialiased`}>
+      <body className={` ${inter.className} relative antialiased`}>
         <NextIntlClientProvider>
           <NavProvider>
             <NavigationBar></NavigationBar>

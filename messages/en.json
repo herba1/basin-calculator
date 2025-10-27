@@ -2,7 +2,12 @@
   "navigation": {
     "problem": "Problem",
     "solution": "Solution",
-    "extra": "Extra",
+    "extra": {
+      "extra":"Extra",
+      "about":"About",
+      "research":"Research",
+      "education":"Education"
+    },
     "button":"Calculate ROI",
     "menuOpen":"Menu",
     "menuClose":"Close"
@@ -27,5 +32,11 @@
     "This managed aquifer recharge strategy helps balance the region's water budget while providing farmers with a valuable tool for long-term water security. However, implementing recharge basins requires significant upfront investment in land preparation, infrastructure, and ongoing management.",
     "Our Water Recharge ROI Calculator helps you make informed decisions by analyzing your soil type, evaluating basin requirements, calculating setup costs, and projecting return on investment. Compare multiple scenarios to determine if converting unused land into a recharge basin makes financial sense for your operation."
     ]
+  },
+  "cta":{
+    "h1t":"Calculate",
+    "h1b":"Your Return",
+    "subtitle":"It only takes 15 minutes to see your ROI",
+    "button":"Calculate Roi"
   }
 }

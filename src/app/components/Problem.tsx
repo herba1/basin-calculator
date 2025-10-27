@@ -87,7 +87,7 @@ export default function Problem({ className = "" }) {
   const solutionHeading = t2.raw("heading") as string[];
 
   return (
-    <section className={cn("relative overflow-x-visible", className)}>
+    <section className={cn("relative overflow-x-clip", className)}>
       <div className="absolute top-0 z-10 h-full w-full overflow-x-clip">
         <div className="sticky top-0 left-0 h-lvh">
           <div className="absolute top-1/2 left-1/2 h-1 w-1 -translate-x-1/2 -translate-y-1/2">
@@ -131,7 +131,7 @@ export default function Problem({ className = "" }) {
         </div>
       </div>
 
-      <div className="relative z-10 mx-auto w-fit overflow-x-clip py-30">
+      <div className="relative z-10 mx-auto w-fit overflow-x-visible py-30">
         <Article className="">
           <ArticleHeading>{problemHeading}</ArticleHeading>
           <ArticleParagraphs texts={problemTexts} />

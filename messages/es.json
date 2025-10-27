@@ -2,7 +2,12 @@
   "navigation": {
     "problem": "Problema",
     "solution": "Solución",
-    "extra": "Otro",
+    "extra": {
+      "extra":"Más",
+      "about":"Acerca de",
+      "research":"Investigación",
+      "education":"Educación"
+    },
     "button":"Calcular ROI",
     "menuOpen":"Menú",
     "menuClose":"Cerrar"
@@ -27,5 +32,11 @@
       "Esta estrategia de recarga gestionada de acuíferos ayuda a equilibrar el presupuesto hídrico de la región mientras proporciona a los agricultores una herramienta valiosa para la seguridad hídrica a largo plazo. Sin embargo, implementar cuencas de recarga requiere una inversión inicial significativa en preparación de tierras, infraestructura y gestión continua.",
       "Nuestra Calculadora de ROI de Recarga de Agua le ayuda a tomar decisiones informadas analizando su tipo de suelo, evaluando requisitos de cuencas, calculando costos de instalación y proyectando el retorno de inversión. Compare múltiples escenarios para determinar si convertir tierra sin usar en una cuenca de recarga tiene sentido financiero para su operación."
     ]
+  },
+  "cta":{
+    "h1t":"Calcula",
+    "h1b":"Your Return",
+    "subtitle":"It only takes 15 minutes to see your ROI",
+    "button":"Calculate Roi"
   }
 }

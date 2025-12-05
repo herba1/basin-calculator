@@ -3,40 +3,77 @@
     "problem": "Problem",
     "solution": "Solution",
     "extra": {
-      "extra":"Extra",
-      "about":"About",
-      "research":"Research",
-      "education":"Education"
+      "extra": "Extra",
+      "about": "About",
+      "research": "Research",
+      "education": "Education"
     },
-    "button":"Calculate ROI",
-    "menuOpen":"Menu",
-    "menuClose":"Close"
+    "button": "Calculate ROI",
+    "menuOpen": "Menu",
+    "menuClose": "Close"
   },
-  "hero":{
-    "title":"Save Money Building Basins",
-    "text":"See how building artificial basins make a difference for the sustained use of water pumping in California. Use the basin calculator to see how much you can save putting unused land to work.",
-    "button":"Calculate Basin Investment"
+  "hero": {
+    "title": "Save Money Building Basins",
+    "text": "See how building artificial basins make a difference for the sustained use of water pumping in California. Use the basin calculator to see how much you can save putting unused land to work.",
+    "button": "Calculate Basin Investment"
   },
-  "problem":{
-    "heading":"The Problems of Over Pumping",
-    "text":[
-    "California's Central Valley faces a critical water challenge that threatens its agricultural future. Decades of intensive farming have depleted underground aquifers faster than nature can replenish them, creating an unsustainable cycle of groundwater overdraft.",
-    "The San Joaquin Valley, one of the world's most productive agricultural regions, is particularly vulnerable to this crisis. Climate variability has intensified the problem, with prolonged drought periods reducing surface water availability and forcing farmers to rely even more heavily on groundwater pumping.",
-    "Without immediate intervention, the consequences will be severe. Continued overdraft leads to permanently diminished storage capacity, dramatically increased pumping costs, land subsidence that damages infrastructure, and potential crop losses. Sustainable solutions are urgently needed to protect this vital resource and ensure water security for future generations of farmers and communities."
+  "problem": {
+    "heading": "The Problems of Over Pumping",
+    "text": [
+      "California's Central Valley faces a critical water challenge that threatens its agricultural future. Decades of intensive farming have depleted underground aquifers faster than nature can replenish them, creating an unsustainable cycle of groundwater overdraft.",
+      "The San Joaquin Valley, one of the world's most productive agricultural regions, is particularly vulnerable to this crisis. Climate variability has intensified the problem, with prolonged drought periods reducing surface water availability and forcing farmers to rely even more heavily on groundwater pumping.",
+      "Without immediate intervention, the consequences will be severe. Continued overdraft leads to permanently diminished storage capacity, dramatically increased pumping costs, land subsidence that damages infrastructure, and potential crop losses. Sustainable solutions are urgently needed to protect this vital resource and ensure water security for future generations of farmers and communities."
     ]
   },
-  "solution":{
-    "heading":"The Ways In Which You Can Help",
-    "text":[
-    "Converting idle or underutilized farmland into water recharge basins offers a practical, scientifically-proven solution to groundwater depletion. During wet years when excess surface water becomes available, these specially designed basins allow water to slowly percolate through the soil into underground aquifers, naturally replenishing depleted groundwater supplies.",
-    "This managed aquifer recharge strategy helps balance the region's water budget while providing farmers with a valuable tool for long-term water security. However, implementing recharge basins requires significant upfront investment in land preparation, infrastructure, and ongoing management.",
-    "Our Water Recharge ROI Calculator helps you make informed decisions by analyzing your soil type, evaluating basin requirements, calculating setup costs, and projecting return on investment. Compare multiple scenarios to determine if converting unused land into a recharge basin makes financial sense for your operation."
+  "solution": {
+    "heading": "The Ways In Which You Can Help",
+    "text": [
+      "Converting idle or underutilized farmland into water recharge basins offers a practical, scientifically-proven solution to groundwater depletion. During wet years when excess surface water becomes available, these specially designed basins allow water to slowly percolate through the soil into underground aquifers, naturally replenishing depleted groundwater supplies.",
+      "This managed aquifer recharge strategy helps balance the region's water budget while providing farmers with a valuable tool for long-term water security. However, implementing recharge basins requires significant upfront investment in land preparation, infrastructure, and ongoing management.",
+      "Our Water Recharge ROI Calculator helps you make informed decisions by analyzing your soil type, evaluating basin requirements, calculating setup costs, and projecting return on investment. Compare multiple scenarios to determine if converting unused land into a recharge basin makes financial sense for your operation."
     ]
   },
-  "cta":{
-    "h1t":"Calculate",
-    "h1b":"Your Return",
-    "subtitle":"It only takes 15 minutes to see your ROI",
-    "button":"Calculate Roi"
+  "cta": {
+    "h1t": "Calculate",
+    "h1b": "Your Return",
+    "subtitle": "It only takes 15 minutes to see your ROI",
+    "button": "Calculate Roi"
+  },
+  "footer": {
+    "about": {
+      "title": "The California Water Institute",
+      "description": "The California Water Institute (CWI) is located at California State University, Fresno and focuses on all aspects of sustainable water resource management solutions through outreach, entrepreneurship, education, testing, and interdisciplinary research."
+    },
+    "generalLinks": {
+      "header": "General Links",
+      "links": {
+        "home": "Home",
+        "calculator": "ROI Calculator",
+        "contact": "Contact"
+      }
+    },
+    "cwiLinks": {
+      "header": "CWI Links",
+      "links": {
+        "about": "Home",
+        "research": "ROI Calculator",
+        "education": "Contact",
+        "news": "News",
+        "events": "Events"
+      }
+    },
+    "divisionsLinks": {
+      "header": "Divisions",
+      "links": {
+        "cit": "Center for Irrigation Technology (CIT)",
+        "wet": "Water, Energy and Technology Center (WET)",
+        "dre": "Division of Research and Education"
+      }
+    },
+    "newsletter": {
+      "button": "Join Newsletter",
+      "text": "Stay up to date with information about CWI"
+    },
+    "connect": "Connect"
   }
 }

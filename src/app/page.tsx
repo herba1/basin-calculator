@@ -5,7 +5,7 @@ import CallToAction from "./components/Cta";
 
 export default function Home() {
   return (
-    <main className={`h-[5000px]`}>
+    <main className={``}>
       <Hero></Hero>
       <Problem></Problem>
       <CallToAction></CallToAction>

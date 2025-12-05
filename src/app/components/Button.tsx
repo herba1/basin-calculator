@@ -11,7 +11,7 @@ export default function Button({
     <button
       {...props}
       className={cn(
-        "bg-highlight ease-out-quart group tracking-body relative h-fit cursor-pointer rounded-lg px-6 py-4 font-bold text-white shadow-md shadow-black/20 transition-transform duration-300 will-change-transform hover:scale-105 active:scale-98",
+        "bg-highlight ease-out-quart group tracking-body relative h-fit cursor-pointer rounded-md px-6 py-4 font-bold text-white shadow-md shadow-black/20 transition-transform duration-300 will-change-transform hover:scale-105 active:scale-98",
         className,
       )}
     >

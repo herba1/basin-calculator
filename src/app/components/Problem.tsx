@@ -25,7 +25,7 @@ function Article({
       )}
     >
       <div className="absolute top-0 left-1/2 h-full w-full -translate-x-1/2 py-0 blur-[10px]">
-        <div className="h-full w-full scale-x-105 bg-white"></div>
+        <div className="h-full rounded-[20%] w-full scale-x-105 bg-white"></div>
       </div>
       <div className="mx-3 flex flex-col gap-6 md:gap-10">{children}</div>
     </article>

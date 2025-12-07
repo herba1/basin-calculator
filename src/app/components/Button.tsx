@@ -1,12 +1,16 @@
+import React from "react";
 import cn from "../utils/cn";
+
+type ButtonProps = {
+  className?: string;
+  children: React.ReactNode;
+} & React.ButtonHTMLAttributes<HTMLButtonElement>;
+
 export default function Button({
   className,
   children,
   ...props
-}: {
-  className?: string;
-  children: React.ReactNode;
-}) {
+}: ButtonProps) {
   return (
     <button
       {...props}

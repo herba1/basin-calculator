@@ -2,8 +2,8 @@ import {create } from "zustand";
 import { Polygon, Feature } from "geojson";
 
 type SoilData = {
-  symbol: string;
-  value: number;
+  type: string;
+  infiltrationRate: number;
 };
 
 type CalculatorStore = {
@@ -15,7 +15,7 @@ type CalculatorStore = {
 
 export const useCalculatorStore = create<CalculatorStore>((set) => ({
   polygons: [],
-  soilData: { symbol: "sand", value: 1 },
+  soilData: { type: "Sand", infiltrationRate: 1 },
 
   setPolygons: (polygons) => set({ polygons }),
   setSoilData: (soilData) => set({ soilData }),

@@ -6,6 +6,7 @@ import "@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css";
 import "mapbox-gl/dist/mapbox-gl.css";
 import Button from "./Button";
 import type { Feature, Polygon, FeatureCollection } from "geojson";
+import { useCalculatorStore } from "../store/calculator";
 
 export default function Map() {
   const mapContainerRef = useRef<HTMLDivElement>(null);
@@ -13,6 +14,7 @@ export default function Map() {
   const drawRef = useRef<any>(null);
   const [polygons, setPolygons] = useState<Feature<Polygon>[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { setSoilData } = useCalculatorStore();
 
   useEffect(() => {
     mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_API_KEY || "";
@@ -87,7 +89,9 @@ export default function Map() {
 
       const data = await response.json();
       console.log("Soil data:", data);
-      alert(`Dominant soil type: ${data.symbol}`);
+
+      // Save to store
+      setSoilData({ type: data.soilType, infiltrationRate: data.infiltrationRate });
     } catch (error) {
       console.error("Error fetching soil data:", error);
       alert("Failed to fetch soil data");
@@ -103,7 +107,7 @@ export default function Map() {
         id="map-container"
         className={cn("h-svh mx-auto w-full")}
       ></div>
-      <div className="absolute top-4 right-4 flex gap-2">
+      <div className="absolute top-0 right-0 mt-2 mr-12 flex gap-2">
         <Button
           onClick={handleReset}
           disabled={polygons.length === 0}

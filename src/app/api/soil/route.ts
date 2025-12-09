@@ -1,11 +1,92 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { parseStringPromise } from 'xml2js';
-import type { FeatureCollection, Polygon } from 'geojson';
+// Provided to use by profressor Marc Herdman, tranlsated using Claude
+import { NextRequest, NextResponse } from "next/server";
+import { parseStringPromise } from "xml2js";
+import type { FeatureCollection, Polygon } from "geojson";
 
 interface Soil {
   symbol: string;
   desc: string;
   acres: number;
+  hydrologicGroup?: string;
+  infiltrationRate?: number;
+}
+
+// Mapping soil texture keywords to infiltration rate (ft/day) based on your table
+function getInfiltrationRate(description: string): {
+  soilType: string;
+  group: string;
+  infiltrationRate: number;
+} {
+  const desc = description.toLowerCase();
+
+  // Check for specific texture patterns (order matters - check more specific first)
+  if (desc.includes("sand")) {
+    if (desc.includes("fine") || desc.includes("layer")) {
+      return {
+        soilType: "Sandy with some fine layering",
+        group: "A'",
+        infiltrationRate: 0.7,
+      };
+    }
+    return { soilType: "Sand", group: "A", infiltrationRate: 1.0 };
+  }
+
+  if (desc.includes("loam")) {
+    if (desc.includes("silt") || desc.includes("clay")) {
+      if (desc.includes("fine") || desc.includes("layer")) {
+        return {
+          soilType: "Silt or clay loam with some fine layering",
+          group: "C'",
+          infiltrationRate: 0.3,
+        };
+      }
+      return {
+        soilType: "Silt or clay loam",
+        group: "C",
+        infiltrationRate: 0.4,
+      };
+    }
+    if (desc.includes("fine") || desc.includes("layer")) {
+      return {
+        soilType: "Loam with some fine layering",
+        group: "B'",
+        infiltrationRate: 0.5,
+      };
+    }
+    return { soilType: "Loam", group: "B", infiltrationRate: 0.6 };
+  }
+
+  if (desc.includes("clay")) {
+    if (desc.includes("restrict")) {
+      return {
+        soilType: "Clay soil with restrictive layers",
+        group: "D",
+        infiltrationRate: 0.05,
+      };
+    }
+    // Clay without "loam" in the name
+    if (!desc.includes("loam")) {
+      return {
+        soilType: "Clay soil with restrictive layers",
+        group: "D",
+        infiltrationRate: 0.05,
+      };
+    }
+  }
+
+  if (desc.includes("silt")) {
+    if (desc.includes("fine") || desc.includes("layer")) {
+      return {
+        soilType: "Silt or clay loam with some fine layering",
+        group: "C'",
+        infiltrationRate: 0.3,
+      };
+    }
+    return { soilType: "Silt or clay loam", group: "C", infiltrationRate: 0.4 };
+  }
+
+  // Default to middle value if no match
+  return { soilType: "Loam (default)", group: "B", infiltrationRate: 0.6 };
 }
 
 function parseAndSortSoils(reportJSON: any): Soil[] | null {
@@ -27,7 +108,16 @@ function parseAndSortSoils(reportJSON: any): Soil[] | null {
         const acresText = row.td?.[1]?.para?.[0]?._ || "";
         const acres = parseFloat(acresText.replace(/,/g, "")) || 0;
 
-        soils.push({ symbol, desc, acres });
+        // Get infiltration rate from description
+        const infiltrationData = getInfiltrationRate(desc);
+
+        soils.push({
+          symbol,
+          desc,
+          acres,
+          hydrologicGroup: infiltrationData.group,
+          infiltrationRate: infiltrationData.infiltrationRate,
+        });
       }
     }
 
@@ -49,7 +139,7 @@ export async function POST(request: NextRequest) {
     if (!geojson) {
       return NextResponse.json(
         { error: "geojson is required" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -72,7 +162,7 @@ export async function POST(request: NextRequest) {
     if (!AOIID) {
       return NextResponse.json(
         { error: "AOI creation failed", raw: aoiData },
-        { status: 502 }
+        { status: 502 },
       );
     }
 
@@ -93,7 +183,7 @@ export async function POST(request: NextRequest) {
     if (!folders) {
       return NextResponse.json(
         { error: "Invalid catalog format", raw: catalogData },
-        { status: 502 }
+        { status: 502 },
       );
     }
 
@@ -101,7 +191,7 @@ export async function POST(request: NextRequest) {
     let selected = null;
     for (const folder of folders) {
       const found = folder.reports.find((r: any) =>
-        r.reportname.toLowerCase().includes("component legend")
+        r.reportname.toLowerCase().includes("component legend"),
       );
       if (found) {
         selected = found;
@@ -131,7 +221,7 @@ export async function POST(request: NextRequest) {
     if (!REPORTDATA) {
       return NextResponse.json(
         { error: "Failed to fetch report data", raw: REPORTDATA },
-        { status: 502 }
+        { status: 502 },
       );
     }
 
@@ -151,7 +241,7 @@ export async function POST(request: NextRequest) {
     if (!REPORTXML) {
       return NextResponse.json(
         { error: "Failed to fetch report" },
-        { status: 502 }
+        { status: 502 },
       );
     }
 
@@ -161,11 +251,9 @@ export async function POST(request: NextRequest) {
     if (!REPORTJSON) {
       return NextResponse.json(
         { error: "Failed to convert report to JSON" },
-        { status: 502 }
+        { status: 502 },
       );
     }
-
-    console.log("\nCompleted\n");
 
     // Step 7: Parse and sort soils
     const soils = parseAndSortSoils(REPORTJSON);
@@ -173,18 +261,24 @@ export async function POST(request: NextRequest) {
     if (!soils || soils.length === 0) {
       return NextResponse.json(
         { error: "No soil data found" },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
-    // Return the dominant soil symbol
-    return NextResponse.json({ symbol: soils[0].symbol });
+    const dominantSoil = soils[0];
+    const infiltrationData = getInfiltrationRate(dominantSoil.desc);
 
+
+    // Return just the soil type and infiltration rate
+    return NextResponse.json({
+      soilType: infiltrationData.soilType,
+      infiltrationRate: infiltrationData.infiltrationRate,
+    });
   } catch (err: any) {
     console.error("SDA ERROR:", err.message);
     return NextResponse.json(
       { error: "Failed", details: err.message },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

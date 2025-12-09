@@ -3,8 +3,9 @@
 import { useState, useRef } from "react";
 import cn from "../utils/cn";
 import Button from "../components/Button";
-import Map from "../components/Map";
+import SoilSelector from "../components/SoilSelector";
 import { handleCalculations } from "../utils/calculations";
+import { useCalculatorStore } from "../store/calculator";
 
 type InputFieldConfig = {
   type: "input";
@@ -127,23 +128,6 @@ const DATA: SectionConfig[] = [
         id: "water-depth",
         name: "water-depth",
         unitEnd: "ft",
-        placeholder: "1",
-      },
-      {
-        type: "select",
-        label: "Soil Type",
-        id: "soil-type",
-        name: "soil-type",
-        options: ["Sand"],
-        defaultValue: "Sand",
-      },
-      {
-        type: "input",
-        inputType: "number",
-        label: "Infiltration Rate",
-        id: "infiltration-rate",
-        name: "infiltration-rate",
-        unitEnd: "ft/day",
         placeholder: "1",
       },
     ],
@@ -475,10 +459,11 @@ function FormSection({ section }: FormSectionProps) {
 export default function CalculatorPage() {
   const [currentStep, setCurrentStep] = useState(0);
   const formRef = useRef<HTMLFormElement>(null);
+  const { soilData } = useCalculatorStore();
 
-  const currentSection = DATA[currentStep];
-  const totalSteps = DATA.length;
-  const progress = ((currentStep + 1) / totalSteps) * 100;
+  const currentSection = DATA[currentStep - 1];
+  const totalSteps = DATA.length + 1; // +1 for soil selection step
+  const progress = (currentStep / totalSteps) * 100;
 
   const handleNext = () => {
     formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -492,26 +477,48 @@ export default function CalculatorPage() {
 
   return (
     <div className="min-h-lvh">
-      <div className="mx-auto max-w-xl p-4">
-        <form ref={formRef} id="calculator" className="">
-          <div className="header sticky top-0 z-20 w-full overflow-clip rounded-md border-1 border-neutral-200 bg-white shadow-sm shadow-black/20">
-            <div className="info flex justify-between p-4">
-              <h3 className="tracking-body">{currentSection.section}</h3>
-              <span className="tracking-body text-black/60">
-                {currentStep + 1}/{totalSteps}
-              </span>
+      <div className="mx-auto max-w-xl rounded-md border-1 border-neutral-200 shadow-md shadow-black/20">
+        {currentStep === 0 ? (
+          <>
+            <div className="header sticky top-0 z-20 w-full overflow-clip rounded-md border-1 border-neutral-200 bg-white shadow-sm shadow-black/20">
+              <div className="info flex justify-between p-4">
+                <h3 className="tracking-body">Soil Selection</h3>
+                <span className="tracking-body text-black/60">
+                  {currentStep + 1}/{totalSteps}
+                </span>
+              </div>
+              <div className="progress-bar-container h-2 w-full bg-neutral-200">
+                <div
+                  className="progress-bar bg-highlight h-full transition-all duration-300"
+                  style={{ width: `${progress}%` }}
+                ></div>
+              </div>
             </div>
-            <div className="progress-bar-container h-2 w-full bg-neutral-200">
-              <div
-                className="progress-bar bg-highlight h-full transition-all duration-300"
-                style={{ width: `${progress}%` }}
-              ></div>
+            <div className="p-6">
+              <SoilSelector />
             </div>
-          </div>
+          </>
+        ) : (
+          <form ref={formRef} id="calculator" className="">
+            <div className="header sticky top-0 z-20 w-full overflow-clip rounded-md border-1 border-neutral-200 bg-white shadow-sm shadow-black/20">
+              <div className="info flex justify-between p-4">
+                <h3 className="tracking-body">{currentSection.section}</h3>
+                <span className="tracking-body text-black/60">
+                  {currentStep + 1}/{totalSteps}
+                </span>
+              </div>
+              <div className="progress-bar-container h-2 w-full bg-neutral-200">
+                <div
+                  className="progress-bar bg-highlight h-full transition-all duration-300"
+                  style={{ width: `${progress}%` }}
+                ></div>
+              </div>
+            </div>
 
-          <FormSection section={currentSection} />
-        </form>
-        <div className="form__actions mt-6 flex justify-between gap-4">
+            <FormSection section={currentSection} />
+          </form>
+        )}
+        <div className="form__actions p-6 flex justify-between gap-4">
           <Button
             onClick={handlePrevious}
             disabled={currentStep === 0}
@@ -522,18 +529,19 @@ export default function CalculatorPage() {
           {currentStep === totalSteps - 1 ? (
             <Button
               onClick={() => {
-                console.log("Form submitted");
-                alert("Submitted!");
-                handleCalculations(formRef.current);
+                if (formRef.current && soilData) {
+                  handleCalculations(formRef.current, soilData);
+                }
               }}
               className="py-2"
+              disabled={!soilData}
             >
               Submit
             </Button>
           ) : (
             <Button
               onClick={handleNext}
-              disabled={currentStep === totalSteps - 1}
+              disabled={currentStep === 0 && !soilData}
               className="py-2"
             >
               Next
@@ -541,7 +549,6 @@ export default function CalculatorPage() {
           )}
         </div>
       </div>
-      <Map></Map>
     </div>
   );
 }

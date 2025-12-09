@@ -10,22 +10,22 @@ const IMAGES = [
   { src: "/ag1.png", alt: "img" },
 ];
 
-function Article({
-  className = "",
-  children,
-}: {
+type ArticleProps = {
   className?: string;
   children: React.ReactNode;
-}) {
+} & React.HTMLAttributes<HTMLElement>;
+
+function Article({ className = "", children, ...props }: ArticleProps) {
   return (
     <article
+      {...props}
       className={cn(
         "article relative mx-auto h-full w-full max-w-3xl overflow-visible py-5",
         className,
       )}
     >
       <div className="absolute top-0 left-1/2 h-full w-full -translate-x-1/2 py-0 blur-[10px]">
-        <div className="h-full rounded-[20%] w-full scale-x-105 bg-white"></div>
+        <div className="h-full w-full scale-x-105 rounded-[20%] bg-white"></div>
       </div>
       <div className="mx-3 flex flex-col gap-6 md:gap-10">{children}</div>
     </article>
@@ -34,7 +34,7 @@ function Article({
 
 function ArticleHeading({ children }: { children: React.ReactNode }) {
   return (
-    <h1 className="leading-heading tracking-heading relative z-10 text-3xl font-black lg:text-5xl">
+    <h1 className="leading-heading tracking-heading relative z-10 text-3xl font-semibold lg:text-5xl">
       {children}
     </h1>
   );
@@ -45,7 +45,7 @@ function ArticleParagraphs({ texts }: { texts: string[] }) {
     <div className="relative z-10 flex flex-col gap-6 md:gap-10">
       {texts.map((text, i) => (
         <span key={i}>
-          <p className={cn("tracking-body opacity-70 lg:text-xl")}>{text}</p>
+          <p className={cn("tracking-body leading-normal opacity-70 lg:text-xl")}>{text}</p>
         </span>
       ))}
     </div>
@@ -132,12 +132,12 @@ export default function Problem({ className = "" }) {
       </div>
 
       <div className="relative z-10 mx-auto w-fit overflow-x-visible py-30">
-        <Article className="">
+        <Article id={"problem"} className="">
           <ArticleHeading>{problemHeading}</ArticleHeading>
           <ArticleParagraphs texts={problemTexts} />
         </Article>
 
-        <Article className="mt-30">
+        <Article id={"solution"} className="mt-30">
           <ArticleHeading>{solutionHeading}</ArticleHeading>
           <ArticleParagraphs texts={solutionTexts} />
         </Article>

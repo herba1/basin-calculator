@@ -4,6 +4,7 @@ import { useState, useRef } from "react";
 import cn from "../utils/cn";
 import Button from "../components/Button";
 import Map from "../components/Map";
+import { handleCalculations } from "../utils/calculations";
 
 type InputFieldConfig = {
   type: "input";
@@ -322,6 +323,16 @@ const DATA: SectionConfig[] = [
         unitEnd: "%",
         defaultValue: "30",
       },
+      {
+        type: "input",
+        inputType: "number",
+        label: "Fencing Unit Cost",
+        id: "fencing-unit-cost",
+        name: "fencing-unit-cost",
+        unitStart: "$",
+        unitEnd: "/ft",
+        defaultValue: "6",
+      },
     ],
   },
 ];
@@ -356,7 +367,7 @@ function InputField({
           id={id}
           className={cn(
             `w-full p-4 outline-none`,
-            `autofill:bg-transparent autofill:shadow-[inset_0_0_0px_1000px_rgb(255,255,255)]`
+            `autofill:bg-transparent autofill:shadow-[inset_0_0_0px_1000px_rgb(255,255,255)]`,
           )}
           {...props}
         ></input>
@@ -498,23 +509,36 @@ export default function CalculatorPage() {
             </div>
           </div>
 
-          <FormSection  section={currentSection} />
+          <FormSection section={currentSection} />
         </form>
         <div className="form__actions mt-6 flex justify-between gap-4">
           <Button
             onClick={handlePrevious}
             disabled={currentStep === 0}
-            className={cn("py-2" , currentStep === 0 && "invisible")}
+            className={cn("py-2", currentStep === 0 && "invisible")}
           >
             Previous
           </Button>
-          <Button
-            onClick={handleNext}
-            disabled={currentStep === totalSteps - 1}
-            className=" py-2 "
-          >
-            {currentStep === totalSteps - 1 ? "Submit" : "Next"}
-          </Button>
+          {currentStep === totalSteps - 1 ? (
+            <Button
+              onClick={() => {
+                console.log("Form submitted");
+                alert("Submitted!");
+                handleCalculations(formRef.current);
+              }}
+              className="py-2"
+            >
+              Submit
+            </Button>
+          ) : (
+            <Button
+              onClick={handleNext}
+              disabled={currentStep === totalSteps - 1}
+              className="py-2"
+            >
+              Next
+            </Button>
+          )}
         </div>
       </div>
       <Map></Map>

@@ -19,8 +19,8 @@ export default function Map() {
 
     mapRef.current = new mapboxgl.Map({
       container: mapContainerRef.current as HTMLElement,
-      center: [-98.5795, 39.8283], // Centered on USA
-      zoom: 3,
+      center: [ -119.4179,36.7783,], // Centered on USA
+      zoom: 5,
       style: "mapbox://styles/mapbox/satellite-streets-v12",
     });
 

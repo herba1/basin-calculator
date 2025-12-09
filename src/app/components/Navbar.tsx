@@ -17,8 +17,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 const navLeftLinks = [
-  { key: "problem", url: "#problem", subLinks: [] },
-  { key: "solution", url: "#solution", subLinks: [] },
+  { key: "problem", url: "/#problem", subLinks: [] },
+  { key: "solution", url: "/#solution", subLinks: [] },
   {
     key: "extra",
     url: "",
@@ -98,9 +98,11 @@ export default function NavigationBar({ className = "" }) {
       </ul>
       <ul className="nav__list nav__right flex items-center gap-3">
         <LanguageButton></LanguageButton>
-        <Button className="ml-3 hidden px-6 py-2 md:inline-block">
-          {t("button")}
-        </Button>
+        <Link href={'/calculator'}>
+          <Button className="ml-3 hidden px-6 py-2 md:inline-block">
+            {t("button")}
+          </Button>
+        </Link>
         <NavigationTrigger className="md:hidden"></NavigationTrigger>
       </ul>
       <NavigationMenu></NavigationMenu>

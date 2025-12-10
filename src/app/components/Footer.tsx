@@ -17,32 +17,35 @@ const FOOTER_DATA = {
   generalLinks: {
     key: "generalLinks",
     links: [
-      { key: "home", url: "#" },
-      { key: "calculator", url: "#" },
-      { key: "contact", url: "#" },
+      { key: "home", url: "/" },
+      { key: "calculator", url: "/calculator" },
+      {
+        key: "contact",
+        url: "https://www.linkedin.com/company/california-water-institute/",
+      },
     ],
   },
   cwiLinks: {
     key: "cwiLinks",
     links: [
-      { key: "about", url: "#" },
-      { key: "research", url: "#" },
-      { key: "education", url: "#" },
-      { key: "news", url: "#" },
-      { key: "events", url: "#" },
+      { key: "about", url: "https://www.californiawater.org/about/" },
+      { key: "research", url: "https://www.californiawater.org/research/" },
+      { key: "education", url: "https://www.californiawater.org/education/" },
+      { key: "news", url: "https://www.californiawater.org/news/" },
+      { key: "events", url: "https://www.californiawater.org/events/" },
     ],
   },
   divisionsLinks: {
     key: "divisionsLinks",
     links: [
-      { key: "cit", url: "#" },
-      { key: "wet", url: "#" },
-      { key: "dre", url: "#" },
+      { key: "cit", url: "https://www.fresnostate.edu/jcast/cit/" },
+      { key: "wet", url: "https://www.wetcenter.org/about-us" },
+      { key: "dre", url: "https://www.californiawater.org/" },
     ],
   },
   newsletter: {
     key: "newsletter",
-    button: { key: "button", url: "#" },
+    button: { key: "button", url: "https://forms.office.com/r/0cdZdPD9xc" },
     text: { key: "text" },
   },
   socials: {
@@ -132,16 +135,18 @@ export default function Footer() {
 
       {/* Newsletter - Mobile: full width below about, Desktop: continues in col 2-4, aligned to bottom */}
       <div className="col-span-2 flex flex-col gap-2 overflow-visible lg:col-span-3 lg:col-start-2 lg:self-end">
-        <p className="tracking-body mx-auto w-full text-center text-black/60 ">
+        <p className="tracking-body mx-auto w-full text-center text-black/60">
           {t(
             `${FOOTER_DATA.newsletter.key}.${FOOTER_DATA.newsletter.text.key}`,
           )}
         </p>
-        <Button className="w-full bg-red-600 py-3">
-          {t(
-            `${FOOTER_DATA.newsletter.key}.${FOOTER_DATA.newsletter.button.key}`,
-          )}
-        </Button>
+        <Link href={FOOTER_DATA.newsletter.button.url} className="w-full ">
+          <Button className="w-full bg-red-600 py-3">
+            {t(
+              `${FOOTER_DATA.newsletter.key}.${FOOTER_DATA.newsletter.button.key}`,
+            )}
+          </Button>
+        </Link>
       </div>
 
       {/* Divisions - Mobile: full width, Desktop: below General Links in col 6-7, aligned to bottom */}

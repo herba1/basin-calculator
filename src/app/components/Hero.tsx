@@ -2,6 +2,7 @@ import Image from "next/image";
 import cn from "../utils/cn";
 import Button from "./Button";
 import { useTranslations } from "next-intl";
+import Link from "next/link";
 
 export default function Hero() {
   const t = useTranslations("hero");
@@ -26,7 +27,9 @@ export default function Hero() {
           </h1>
           <div className="flex max-w-sm flex-col gap-5">
             <p className="tracking-body leading-none">{t("text")}</p>
-            <Button className="py-3">{t("button")}</Button>
+            <Link className="w-full" href={"/calculator"}>
+              <Button className="w-full py-3">{t("button")}</Button>
+            </Link>
           </div>
         </div>
       </div>

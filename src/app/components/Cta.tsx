@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import Button from "./Button";
+import Link from "next/link";
 
 export default function CallToAction() {
   const t = useTranslations("cta");
@@ -26,10 +27,12 @@ export default function CallToAction() {
           </h1>
           <p className="tracking-body mt-3">{t("subtitle")}</p>
           <div className="relative mt-3 inline-block h-fit w-fit">
-            <span className="absolute glowing top-0 left-0 inline-block h-full w-full blur-md"></span>
-            <Button className="relative h-fit py-3 leading-none">
-              {t("button")}
-            </Button>
+            <span className="glowing absolute top-0 left-0 inline-block h-full w-full blur-md"></span>
+            <Link className="w-full inline-block" href={"/calculator"}>
+              <Button className="relative h-fit w-full py-3 leading-none">
+                {t("button")}
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

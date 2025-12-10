@@ -35,9 +35,9 @@
   },
   "cta":{
     "h1t":"Calcula",
-    "h1b":"Your Return",
-    "subtitle":"It only takes 15 minutes to see your ROI",
-    "button":"Calculate Roi"
+    "h1b":"Tu Retorno",
+    "subtitle":"Solo toma 15 minutos ver tu ROI",
+    "button":"Calcular ROI"
   },
   "footer":{
     "about":{
@@ -45,7 +45,7 @@
       "description":"El Instituto del Agua de California (CWI) está ubicado en la Universidad Estatal de California, Fresno y se enfoca en todos los aspectos de soluciones sostenibles de gestión de recursos hídricos a través de divulgación, emprendimiento, educación, pruebas e investigación interdisciplinaria."
     },
     "generalLinks":{
-        "header":"generalLinks",
+        "header":"Enlaces Generales",
         "links":{
           "home":"Inicio",
           "calculator":"Calculadora ROI",
@@ -53,17 +53,17 @@
         }
     },
     "cwiLinks":{
-        "header":"cwiLinks",
+        "header":"Enlaces CWI",
         "links":{
-          "about":"Inicio",
-          "research":"Calculadora ROI",
-          "education":"Contacto",
+          "about":"Acerca de",
+          "research":"Investigación",
+          "education":"Educación",
           "news":"Noticias",
           "events":"Eventos"
         }
     },
     "divisionsLinks":{
-        "header":"divisionsLinks",
+        "header":"Enlaces de Divisiones",
         "links":{
           "cit":"Centro de Tecnología de Riego (CIT)",
           "wet":"Centro de Agua, Energía y Tecnología (WET)",

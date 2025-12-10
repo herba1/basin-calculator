@@ -461,7 +461,7 @@ export default function CalculatorPage() {
   const [currentStep, setCurrentStep] = useState(0);
   const formRef = useRef<HTMLFormElement>(null);
   const router = useRouter();
-  const { soilData, setReportData } = useCalculatorStore();
+  const { soilData, setReportData, reportData } = useCalculatorStore();
 
   const currentSection = DATA[currentStep - 1];
   const totalSteps = DATA.length + 1; // +1 for soil selection step
@@ -533,6 +533,7 @@ export default function CalculatorPage() {
               onClick={() => {
                 if (formRef.current && soilData) {
                   setReportData(handleCalculations(formRef.current, soilData));
+                  console.log(reportData);
                   router.push("/report");
                 }
               }}

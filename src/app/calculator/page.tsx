@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
+import { useRouter } from "next/navigation";
 import cn from "../utils/cn";
 import Button from "../components/Button";
 import SoilSelector from "../components/SoilSelector";
@@ -459,7 +460,8 @@ function FormSection({ section }: FormSectionProps) {
 export default function CalculatorPage() {
   const [currentStep, setCurrentStep] = useState(0);
   const formRef = useRef<HTMLFormElement>(null);
-  const { soilData } = useCalculatorStore();
+  const router = useRouter();
+  const { soilData, setReportData } = useCalculatorStore();
 
   const currentSection = DATA[currentStep - 1];
   const totalSteps = DATA.length + 1; // +1 for soil selection step
@@ -518,7 +520,7 @@ export default function CalculatorPage() {
             <FormSection section={currentSection} />
           </form>
         )}
-        <div className="form__actions p-6 flex justify-between gap-4">
+        <div className="form__actions flex justify-between gap-4 p-6">
           <Button
             onClick={handlePrevious}
             disabled={currentStep === 0}
@@ -530,7 +532,8 @@ export default function CalculatorPage() {
             <Button
               onClick={() => {
                 if (formRef.current && soilData) {
-                  handleCalculations(formRef.current, soilData);
+                  setReportData(handleCalculations(formRef.current, soilData));
+                  router.push("/report");
                 }
               }}
               className="py-2"

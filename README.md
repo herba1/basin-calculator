@@ -1,27 +1,36 @@
 # Basin Calculator
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+A financial tool for Central California farmers evaluating water recharge basin investments. Built addressing groundwater depletion in the Central Valley.
 
-Make sure node is installed.
+**Live:** [basin-calculator.vercel.app](https://basin-calculator.vercel.app)
 
-then run
+## What It Does
+
+Calculates ROI and financial feasibility for converting farmland into managed aquifer recharge (MAR) basins. Features:
+- Homepage talking about the problem 
+- Calculator for basin design, costs, and water availability
+- Financial report (NPV, ROI, benefit-cost ratio)
+- Bilingual support (English/Spanish)
+
+## Tech Stack
+
+Next.js 16 · React 19 · TypeScript · Tailwind CSS 4 · Mapbox GL · Zustand · USDA SDMD API
+
+## Setup
+
 ```bash
 npm install
 ```
 
-First, run the development server:
+Create `.env.local`:
+```
+NEXT_PUBLIC_MAPBOX_TOKEN=your_mapbox_token
+```
+
+Get a free Mapbox token at [mapbox.com/account/access-tokens](https://account.mapbox.com/access-tokens/)
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Open [http://localhost:3000](http://localhost:3000)

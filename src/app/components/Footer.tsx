@@ -75,7 +75,7 @@ const FOOTER_DATA = {
 
 export default function Footer() {
   const t = useTranslations("footer");
-  console.log(`${FOOTER_DATA.divisionsLinks.key}.header`);
+  // console.log(`${FOOTER_DATA.divisionsLinks.key}.header`);
   return (
     <footer className="grid grid-cols-2 gap-10 px-4 pt-20 pb-5 lg:grid-cols-12 lg:gap-x-6 lg:px-0 lg:pb-20">
       {/* About Section - Mobile: full width, Desktop: col 2-4 */}

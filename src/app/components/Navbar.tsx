@@ -98,7 +98,7 @@ export default function NavigationBar({ className = "" }) {
       </ul>
       <ul className="nav__list nav__right flex items-center gap-3">
         <LanguageButton></LanguageButton>
-        <Link href={'/calculator'}>
+        <Link href={"/calculator"}>
           <Button className="ml-3 hidden px-6 py-2 md:inline-block">
             {t("button")}
           </Button>
@@ -118,8 +118,9 @@ export default function NavigationBar({ className = "" }) {
 
 // TODO
 function NavigationMenu() {
-  const { isOpen } = useNav();
+  const { isOpen, setIsOpen } = useNav();
   const t = useTranslations("navigation");
+  const nav = useNav();
   return (
     <menu
       data-is-open={isOpen}
@@ -143,12 +144,16 @@ function NavigationMenu() {
             }
             return (
               <NavigationMenuItem key={index}>
-                {t(`${item.key}`)}
+                <Link className="inline-block h-full w-full" href={item.url}>
+                  {t(`${item.key}`)}
+                </Link>
               </NavigationMenuItem>
             );
           })}
         </ul>
-        <Button className="mt-20 w-full">Calculate ROI</Button>
+        <Link onClick={()=>{setIsOpen(false)}} href={"/calculator"}>
+          <Button className="mt-20 w-full">Calculate ROI</Button>
+        </Link>
       </div>
     </menu>
   );
@@ -216,7 +221,7 @@ function NavigationMenuItemAccordion({
                   nav.setIsOpen(!nav.isOpen);
                   setIsOpen(!isOpen);
                 }}
-                className="pt-3 text-black/60"
+                className="h-full w-full pt-3 text-black/60"
                 key={index}
                 href={item.url}
               >

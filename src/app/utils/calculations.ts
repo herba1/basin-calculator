@@ -340,8 +340,8 @@ export const handleCalculations = (
   const formData = new FormData(form);
   const rawInputs = Object.fromEntries(formData.entries());
 
-  console.log("Raw Form Inputs:", rawInputs);
-  console.log("Soil Data from Store:", soilData);
+  // console.log("Raw Form Inputs:", rawInputs);
+  // console.log("Soil Data from Store:", soilData);
 
   // Parse form data into typed inputs
   const inputs: BasinInputs = {
@@ -386,7 +386,7 @@ export const handleCalculations = (
     evaporationLossRate: parseFloat(rawInputs["evaporation-loss-rate"] as string) || 30,
   };
 
-  console.log("Parsed Inputs:", inputs);
+  // console.log("Parsed Inputs:", inputs);
 
   // Layer 1: Basic Geometry
   const perimeter = calculatePerimeter(inputs.longSide, inputs.shortSide);
@@ -603,95 +603,95 @@ export const handleCalculations = (
     roi,
   };
 
-  console.log("\n=== CALCULATION RESULTS ===");
-  console.log("\n--- GEOMETRY ---");
-  console.log(`Perimeter: ${perimeter.toFixed(2)} ft`);
-  console.log(`Levee Height: ${leveeHeight.toFixed(2)} ft`);
-  console.log(`Basin Area: ${basinAreaAcres.toFixed(2)} acres`);
+  // console.log("\n=== CALCULATION RESULTS ===");
+  // console.log("\n--- GEOMETRY ---");
+  // console.log(`Perimeter: ${perimeter.toFixed(2)} ft`);
+  // console.log(`Levee Height: ${leveeHeight.toFixed(2)} ft`);
+  // console.log(`Basin Area: ${basinAreaAcres.toFixed(2)} acres`);
 
-  console.log("\n--- EARTHWORK ---");
-  console.log(`Total Earthwork Volume: ${totalEarthworkVolume.toFixed(2)} cu yds`);
+  // console.log("\n--- EARTHWORK ---");
+  // console.log(`Total Earthwork Volume: ${totalEarthworkVolume.toFixed(2)} cu yds`);
 
-  console.log("\n--- WETTED AREA ---");
-  console.log(`Wetted Area: ${wettedArea.areaAcres.toFixed(2)} acres`);
-  console.log(`Net Inside Dimensions: ${netLength.toFixed(2)} ft x ${netWidth.toFixed(2)} ft`);
+  // console.log("\n--- WETTED AREA ---");
+  // console.log(`Wetted Area: ${wettedArea.areaAcres.toFixed(2)} acres`);
+  // console.log(`Net Inside Dimensions: ${netLength.toFixed(2)} ft x ${netWidth.toFixed(2)} ft`);
 
-  console.log("\n--- RECHARGE ---");
-  console.log(`Operating Days Per Year: ${operatingDaysPerYear.toFixed(2)} days`);
-  console.log(`Daily Infiltration: ${dailyInfiltrationVolume.toFixed(2)} af/day`);
-  console.log(`Gross Annual Recharge: ${grossAnnualRecharge.toFixed(2)} af/yr`);
-  console.log(`Net Annual Recharge: ${netAnnualRecharge.toFixed(2)} af/yr`);
-  console.log(`Fill Rate: ${fillRate.toFixed(2)} cfs`);
-  console.log(`Required Pipe Size: ${requiredPipeSize.toFixed(2)} inches`);
+  // console.log("\n--- RECHARGE ---");
+  // console.log(`Operating Days Per Year: ${operatingDaysPerYear.toFixed(2)} days`);
+  // console.log(`Daily Infiltration: ${dailyInfiltrationVolume.toFixed(2)} af/day`);
+  // console.log(`Gross Annual Recharge: ${grossAnnualRecharge.toFixed(2)} af/yr`);
+  // console.log(`Net Annual Recharge: ${netAnnualRecharge.toFixed(2)} af/yr`);
+  // console.log(`Fill Rate: ${fillRate.toFixed(2)} cfs`);
+  // console.log(`Required Pipe Size: ${requiredPipeSize.toFixed(2)} inches`);
 
-  console.log("\n--- CAPITAL COSTS ---");
-  console.log(`Land Cost: $${landCost.toLocaleString("en-US", { minimumFractionDigits: 2 })}`);
-  console.log(
-    `Earthwork Cost: $${earthworkCost.toLocaleString("en-US", { minimumFractionDigits: 2 })}`
-  );
-  console.log(
-    `Pipeline Cost: $${pipelineCost.toLocaleString("en-US", { minimumFractionDigits: 2 })}`
-  );
-  console.log(`Inlet Cost: $${inletCost.toLocaleString("en-US", { minimumFractionDigits: 2 })}`);
-  console.log(
-    `Fencing Cost: $${fencingCost.toLocaleString("en-US", { minimumFractionDigits: 2 })}`
-  );
-  console.log(
-    `Engineering Contingency: $${engineeringContingencyCost.toLocaleString("en-US", {
-      minimumFractionDigits: 2,
-    })}`
-  );
-  console.log(
-    `Total Capital Cost: $${totalCapitalCost.toLocaleString("en-US", {
-      minimumFractionDigits: 2,
-    })}`
-  );
+  // console.log("\n--- CAPITAL COSTS ---");
+  // console.log(`Land Cost: $${landCost.toLocaleString("en-US", { minimumFractionDigits: 2 })}`);
+  // console.log(
+  //   `Earthwork Cost: $${earthworkCost.toLocaleString("en-US", { minimumFractionDigits: 2 })}`
+  // );
+  // console.log(
+  //   `Pipeline Cost: $${pipelineCost.toLocaleString("en-US", { minimumFractionDigits: 2 })}`
+  // );
+  // console.log(`Inlet Cost: $${inletCost.toLocaleString("en-US", { minimumFractionDigits: 2 })}`);
+  // console.log(
+  //   `Fencing Cost: $${fencingCost.toLocaleString("en-US", { minimumFractionDigits: 2 })}`
+  // );
+  // console.log(
+  //   `Engineering Contingency: $${engineeringContingencyCost.toLocaleString("en-US", {
+  //     minimumFractionDigits: 2,
+  //   })}`
+  // );
+  // console.log(
+  //   `Total Capital Cost: $${totalCapitalCost.toLocaleString("en-US", {
+  //     minimumFractionDigits: 2,
+  //   })}`
+  // );
 
-  console.log("\n--- ANNUAL COSTS ---");
-  console.log(
-    `Annual Capital Payment: $${annualCapitalPayment.toLocaleString("en-US", {
-      minimumFractionDigits: 2,
-    })}/yr`
-  );
-  console.log(
-    `Annual Water Cost: $${annualWaterCost.toLocaleString("en-US", {
-      minimumFractionDigits: 2,
-    })}/yr`
-  );
-  console.log(
-    `Annual O&M Cost: $${annualOMCost.toLocaleString("en-US", { minimumFractionDigits: 2 })}/yr`
-  );
-  console.log(
-    `Total Annual Operating Cost: $${totalAnnualOperatingCost.toLocaleString("en-US", {
-      minimumFractionDigits: 2,
-    })}/yr`
-  );
+  // console.log("\n--- ANNUAL COSTS ---");
+  // console.log(
+  //   `Annual Capital Payment: $${annualCapitalPayment.toLocaleString("en-US", {
+  //     minimumFractionDigits: 2,
+  //   })}/yr`
+  // );
+  // console.log(
+  //   `Annual Water Cost: $${annualWaterCost.toLocaleString("en-US", {
+  //     minimumFractionDigits: 2,
+  //   })}/yr`
+  // );
+  // console.log(
+  //   `Annual O&M Cost: $${annualOMCost.toLocaleString("en-US", { minimumFractionDigits: 2 })}/yr`
+  // );
+  // console.log(
+  //   `Total Annual Operating Cost: $${totalAnnualOperatingCost.toLocaleString("en-US", {
+  //     minimumFractionDigits: 2,
+  //   })}/yr`
+  // );
 
-  console.log("\n--- PER ACRE-FOOT METRICS ---");
-  console.log(
-    `Annualized Capital Cost: $${annualizedCapitalCostPerAf.toFixed(2)}/af`
-  );
-  console.log(`Total Cost: $${totalCostPerAf.toFixed(2)}/af`);
-  console.log(`Net Benefit: $${netBenefitPerAf.toFixed(2)}/af`);
+  // console.log("\n--- PER ACRE-FOOT METRICS ---");
+  // console.log(
+  //   `Annualized Capital Cost: $${annualizedCapitalCostPerAf.toFixed(2)}/af`
+  // );
+  // console.log(`Total Cost: $${totalCostPerAf.toFixed(2)}/af`);
+  // console.log(`Net Benefit: $${netBenefitPerAf.toFixed(2)}/af`);
 
-  console.log("\n--- BENEFITS ---");
-  console.log(
-    `Annual Benefit: $${annualBenefit.toLocaleString("en-US", { minimumFractionDigits: 2 })}/yr`
-  );
-  console.log(
-    `Annual Net Benefit: $${annualNetBenefit.toLocaleString("en-US", {
-      minimumFractionDigits: 2,
-    })}/yr`
-  );
+  // console.log("\n--- BENEFITS ---");
+  // console.log(
+  //   `Annual Benefit: $${annualBenefit.toLocaleString("en-US", { minimumFractionDigits: 2 })}/yr`
+  // );
+  // console.log(
+  //   `Annual Net Benefit: $${annualNetBenefit.toLocaleString("en-US", {
+  //     minimumFractionDigits: 2,
+  //   })}/yr`
+  // );
 
-  console.log("\n--- ROI ANALYSIS ---");
-  console.log(
-    `NPV: $${npv.toLocaleString("en-US", { minimumFractionDigits: 2 })}`
-  );
-  console.log(`Benefit-Cost Ratio: ${benefitCostRatio.toFixed(2)}`);
-  console.log(`ROI: ${roi.toFixed(2)}%`);
+  // console.log("\n--- ROI ANALYSIS ---");
+  // console.log(
+  //   `NPV: $${npv.toLocaleString("en-US", { minimumFractionDigits: 2 })}`
+  // );
+  // console.log(`Benefit-Cost Ratio: ${benefitCostRatio.toFixed(2)}`);
+  // console.log(`ROI: ${roi.toFixed(2)}%`);
 
-  console.log("\n=== END RESULTS ===\n");
+  // console.log("\n=== END RESULTS ===\n");
 
   return outputs;
 };

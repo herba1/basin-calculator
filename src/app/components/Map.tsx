@@ -88,7 +88,7 @@ export default function Map() {
       }
 
       const data = await response.json();
-      console.log("Soil data:", data);
+      // console.log("Soil data:", data);
 
       // Save to store
       setSoilData({ type: data.soilType, infiltrationRate: data.infiltrationRate });

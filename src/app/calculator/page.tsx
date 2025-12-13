@@ -533,7 +533,7 @@ export default function CalculatorPage() {
               onClick={() => {
                 if (formRef.current && soilData) {
                   setReportData(handleCalculations(formRef.current, soilData));
-                  console.log(reportData);
+                  // console.log(reportData);
                   router.push("/report");
                 }
               }}

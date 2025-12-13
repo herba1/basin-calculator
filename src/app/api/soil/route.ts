@@ -201,7 +201,6 @@ export async function POST(request: NextRequest) {
 
     if (!selected) selected = folders[0].reports[0];
     const REPORTID = selected.reportid;
-    console.log(`Using report: ${selected.reportname} (id ${REPORTID})`);
 
     // Step 4: Get report metadata
     const reportDataResp = await fetch(url, {
